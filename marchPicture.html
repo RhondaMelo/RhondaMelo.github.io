@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <style>
+    #background_image {
+        background-image: url(a.jpg);
+        width: calc(2048px/3);
+        height: calc(1489px/3);
+        background-size: contain;
+    }
+    
+    #foreground_image {
+        background-image: url(b.jpg);
+        width: calc(240px);
+        height: calc(173px);
+        background-size: contain;
+        left: 100px;
+        top: 100px;
+        position: relative;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="background_image">
+        <div id="foreground_image"> </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+var myMouseIsDown=false
+
+document.addEventListener("mousedown", function(){myMouseIsDown=true})
+document.addEventListener("mouseup", function(){myMouseIsDown=false})
+
+document.addEventListener("mousemove", function(theThingWeHaveBeenGiven) {
+    console.log(theThingWeHaveBeenGiven.x, theThingWeHaveBeenGiven.y)
+    var fg = document.querySelector("#foreground_image")
+
+    if (myMouseIsDown) {
+
+
+        fg.style.left = theThingWeHaveBeenGiven.x + "px"
+        fg.style.top = theThingWeHaveBeenGiven.y + "px"
+
+    }
+
+
+})
+</script>
+
+</html>
